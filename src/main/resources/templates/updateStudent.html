@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4 mb-4">Update Student</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form th:action="@{/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+                <div class="form-group">
+                    <label for="studentID">Student ID</label>
+                    <input type="text" class="form-control" id="studentID" th:field="*{studentID}" placeholder="Enter Student ID">
+                </div>
+                <div class="form-group">
+                    <label for="studentName">Name</label>
+                    <input type="text" class="form-control" id="studentName" th:field="*{studentName}" placeholder="Enter Student Name">
+                </div>
+                <div class="form-group">
+                    <label for="faculty">Faculty</label>
+                    <input type="text" class="form-control" id="faculty" th:field="*{faculty}" placeholder="Enter Faculty">
+                </div>
+                <div class="form-group">
+                    <label for="tell">Tell</label>
+                    <input type="text" class="form-control" id="tell" th:field="*{tell}" placeholder="Enter Phone Number">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

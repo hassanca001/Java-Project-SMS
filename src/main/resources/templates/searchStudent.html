@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4 mb-4">Search Student</h1>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form th:action="@{/search}" method="post">
+                <div class="form-group">
+                    <label for="studentName">Name</label>
+                    <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter Student Name">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="table-responsive" th:if="${students != null}">
+        <h2>Search Results</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Faculty</th>
+                <th>Tell</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.studentID}"></td>
+                <td th:text="${student.studentName}"></td>
+                <td th:text="${student.faculty}"></td>
+                <td th:text="${student.tell}"></td>
+                <td>
+                    <a th:href="@{/update/{id}(id=${student.id})}" class="btn btn-warning btn-sm">Update</a>
+                    <a th:href="@{/delete/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4 mb-4">Student Management System</h1>
+    <div class="mb-4">
+        <a class="btn btn-primary mr-2" href="/add">Add Student</a>
+        <a class="btn btn-secondary" href="/search">Search Student</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Faculty</th>
+                <th>Tell</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.studentID}"></td>
+                <td th:text="${student.studentName}"></td>
+                <td th:text="${student.faculty}"></td>
+                <td th:text="${student.tell}"></td>
+                <td>
+                    <a th:href="@{/update/{id}(id=${student.id})}" class="btn btn-warning btn-sm">Update</a>
+                    <a th:href="@{/delete/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
